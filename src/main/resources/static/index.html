@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淘购下单台</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="app-shell">
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">Spring Boot + Maven</p>
+            <h1>淘购下单台</h1>
+        </div>
+        <div class="topbar-actions">
+            <label class="search-box">
+                <span>搜索</span>
+                <input id="searchInput" type="search" placeholder="商品、店铺">
+            </label>
+            <div class="cart-pill">
+                <span id="cartCount">0</span>
+                <small>购物车</small>
+            </div>
+        </div>
+    </header>
+
+    <main class="commerce-layout">
+        <section class="catalog-section">
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">精选商品</p>
+                    <h2>今日好物</h2>
+                </div>
+                <div class="category-tabs" aria-label="商品分类">
+                    <button class="tab active" type="button" data-category="all">全部</button>
+                    <button class="tab" type="button" data-category="digital">数码</button>
+                    <button class="tab" type="button" data-category="life">生活</button>
+                    <button class="tab" type="button" data-category="style">穿搭</button>
+                </div>
+            </div>
+            <div id="productGrid" class="product-grid"></div>
+        </section>
+
+        <aside class="checkout-panel">
+            <section class="panel-block">
+                <div class="section-head compact">
+                    <div>
+                        <p class="eyebrow">购物车</p>
+                        <h2>待结算</h2>
+                    </div>
+                    <button id="clearCartBtn" class="ghost-button" type="button">清空</button>
+                </div>
+                <div id="cartItems" class="cart-items"></div>
+                <div class="cart-total">
+                    <span>合计</span>
+                    <strong id="cartTotal">¥0.00</strong>
+                </div>
+            </section>
+
+            <form id="checkoutForm" class="panel-block order-form">
+                <div class="section-head compact">
+                    <div>
+                        <p class="eyebrow">收货信息</p>
+                        <h2>提交订单</h2>
+                    </div>
+                </div>
+                <label>
+                    <span>收货人</span>
+                    <input name="buyerName" type="text" maxlength="20" required placeholder="张三">
+                </label>
+                <label>
+                    <span>手机号</span>
+                    <input name="phone" type="tel" maxlength="11" required placeholder="13800138000">
+                </label>
+                <label>
+                    <span>地址</span>
+                    <textarea name="address" rows="3" required placeholder="省市区、街道、门牌号"></textarea>
+                </label>
+                <label>
+                    <span>备注</span>
+                    <input name="remark" type="text" maxlength="60" placeholder="可选">
+                </label>
+                <button id="checkoutBtn" class="primary-button" type="submit">提交订单</button>
+            </form>
+        </aside>
+    </main>
+
+    <section class="orders-section">
+        <div class="section-head">
+            <div>
+                <p class="eyebrow">订单记录</p>
+                <h2>最近订单</h2>
+            </div>
+            <button id="refreshOrdersBtn" class="ghost-button" type="button">刷新</button>
+        </div>
+        <div id="orderList" class="order-list"></div>
+    </section>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>
